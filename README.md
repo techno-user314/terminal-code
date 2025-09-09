@@ -9,8 +9,8 @@ With your assigments out of the way, you are free to search out the secrets that
 *Terminal Code* blends RPG progression with a simulated Linux-like terminal.
 
 - Unlock new commands as you progress
-- Write your own “bash files” to automate grinding.
-- Explore remote systems as dungeons filled with logs, secrets, and puzzles.
+- Write your own bash files to automate grinding.
+- Explore remote systems filled with logs, secrets, and puzzles.
 - Choose whether to collaborate with, resist, or outwit the intelligence you helped create.
 
 The cursor blinks. The network hums. Piece by piece, the truth emerges...
