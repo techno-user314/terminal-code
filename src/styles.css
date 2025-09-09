@@ -1,0 +1,117 @@
+:root{
+  --bg:#000000;
+  --text:#00ff11;
+  --prompt:#00ff11;
+  --cursor:#00ff11;
+  font-family: "Courier New", Courier, monospace;
+}
+html,body{
+  height:100%;
+  margin:0;
+  background-image: url("images/background.jpg");
+  background-color: rgba(0, 0, 0, 0.925);
+  background-blend-mode: overlay;
+  color: var(--text);
+}
+
+.wrap{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:25px;
+  box-sizing:border-box;
+}
+.systeminfo{
+  width:600px;
+  max-width:100%;
+  height:75px;
+  background:var(--bg);
+  border:2px solid var(--bgradialcolor3);
+  border-radius:12px;
+  box-shadow:0 0 15px var(--bgradialcolor3);
+  padding:10px;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  position:relative;
+}
+.infotext{
+  float: right;
+}
+.terminal{
+  width:900px;
+  max-width:100%;
+  height:600px;
+  background:var(--bg);
+  border:2px solid var(--text);
+  border-radius:12px;
+  box-shadow:0 0 15px rgba(0,255,100,0.6);
+  padding:10px;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  position:relative;
+}
+/* subtle scanlines */
+.terminal::before {
+  content:"";
+  position:absolute;
+  top:0; left:0; right:0; bottom:0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0,255,100,0.05) 0px,
+    rgba(0,255,100,0.05) 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  pointer-events:none;
+}
+.screen{
+  flex:1;
+  overflow:hidden;
+  font-size:15px;
+  line-height:1.4;
+  text-shadow:0 0 5px rgba(0,255,100,0.7);
+}
+.output{
+  white-space:pre-wrap;
+}
+.row{
+  display:flex;
+  gap:8px;
+  align-items:flex-start;
+  margin-bottom:4px;
+}
+.prompt{
+  color:var(--prompt);
+  user-select:none;
+}
+.input-line{
+  display:flex;
+  gap:8px;
+  align-items:flex-start;
+  width:100%;
+}
+.cmd{
+  flex:1;
+  outline:none;
+  white-space:pre-wrap;
+  word-break:break-word;
+  caret-color:transparent;
+  min-height:1em;
+}
+.cmd:focus::after{
+  content:"";
+  display:inline-block;
+  width:8px;
+  height:1em;
+  margin-left:2px;
+  background:var(--cursor);
+  animation:blink 1s steps(1) infinite;
+}
+@keyframes blink { 50%{opacity:0;} }
+
+/* scrollbar styled */
+.screen::-webkit-scrollbar{width:8px;}
+.screen::-webkit-scrollbar-thumb{background:rgba(0,255,100,0.4);}
+.screen::-webkit-scrollbar-track{background:rgba(0,255,100,0.4);}
