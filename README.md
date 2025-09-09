@@ -12,7 +12,7 @@ With your assigments out of the way, you are free to search out the secrets that
 - Explore remote systems as dungeons filled with logs, secrets, and puzzles.
 - Choose whether to collaborate with, resist, or outwit the intelligence you helped create.
 
-The cursor blinks. The network hums. Piece by piece, the truth emerges
+The cursor blinks. The network hums. Piece by piece, the truth emerges...
 
 <br/>
 
