@@ -8,7 +8,29 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 
-<body>
+<body class="landing-page">
+  <!--START/BOOT/LOGIN PAGE-->
+  <div id="boot-screen"></div>
+
+  <div class="modal play-modal" id="play-modal">
+    <h1>TERMINAL CODE<span class="blinker">_</span></h1>
+    <form>
+      <button type="button" onclick="boot()">PLAY</button>
+      <button type="button">LOAD GAME</button>
+      <button type="button">SETTINGS</button>
+    </form>
+  </div>
+  
+  <div class="modal login-modal" id="login-modal">
+    <h1>LOGIN REQUIRED<span class="blinker">_</span></h1>
+    <form>
+      <label for="username">Enter Username:</label><br><br>
+      <input type="text" id="username" name="username" placeholder="player"><br>
+      <button type="button" onclick="play()">ENTER</button>
+    </form>
+  </div>
+  
+  <!--MAIN PAGE-->
   <div class="wrap">
     <div class="systeminfo">
       <div>
@@ -49,7 +71,8 @@
       </div>
     </div>
   </div>
-
+  
+  <!--SCRIPTS-->
   <script>
     // Update time
     function updateTime() {
@@ -62,8 +85,7 @@
     updateTime();
     setInterval(updateTime, 3000);
   </script>
-  <script type="module" src="scripts/commands.js"></script>
-  <script type="module" src="scripts/advance.js"></script>
-  <script type="module" src="scripts/main.js"></script>
+  <script src="scripts/startup.js"></script>
+  
 </body>
 </html>
