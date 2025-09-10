@@ -15,7 +15,7 @@ With your assigments out of the way, you are free to search out the secrets that
 
 The cursor blinks. The network hums. Piece by piece, the truth emerges...
 
-## Play
+## How to Play
 This game is still a work in progress, check back soon to play!
 
 <br/>
