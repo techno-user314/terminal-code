@@ -51,8 +51,8 @@ cmdline.addEventListener('keydown', ev => {
 // ---- COMMAND REGISTRY ----
 const commands = {};
 
-export function registerCommand(name, fn, helpText = "") {
-  commands[name] = { fn, helpText, enabled: true };
+export function registerCommand(name, fn, helpText = "", able = true) {
+  commands[name] = { fn, helpText, enabled: able };
 }
 
 function appendOutput(text) {
