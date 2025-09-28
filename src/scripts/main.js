@@ -52,7 +52,7 @@ cmdline.addEventListener('keydown', ev => {
 const commands = {};
 
 export function registerCommand(name, fn, helpText = "", able = true) {
-  commands[name] = { fn, helpText, enabled: able };
+  commands[name] = { fn, helpText, enabled: able, use_count: 0 };
 }
 
 function appendOutput(text) {
