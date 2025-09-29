@@ -43,6 +43,25 @@ const advance = {
           advancementNum += 1;
         }
         break;
+    
+      case 3:
+        if (cmd === "help") {
+          commands["begin"].enabled = true;
+          setTip("Go ahead, try it.");
+          advancementNum += 1;
+        }
+        break;
+        
+      case 4:
+        if (cmd === "begin") {
+          setTip("");
+          advancementNum += 1;
+        }
+        break;
+        
+      case 5:
+        commands["begin"].enabled = false;
+        advancementNum += 1;
         
       default:
         break;
