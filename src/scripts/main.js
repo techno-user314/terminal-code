@@ -110,7 +110,17 @@ function handleCommand(cmd) {
     }
     try {
       const result = commands[name].fn(args);
-      if (result !== undefined) appendOutputAnimated(result);
+      
+      if (result instanceof Promise) {
+        result.then(resolved => {
+          if (resolved !== undefined) appendOutputAnimated(resolved);
+        }).catch(err => {
+          appendOutputAnimated("Error, see log for details");
+        });
+      } else {
+        if (result !== undefined) appendOutputAnimated(result);
+      }
+      
     } catch (e) {
       appendOutputAnimated("Error, see log for details");
       console.log("Error: " + e.message);
