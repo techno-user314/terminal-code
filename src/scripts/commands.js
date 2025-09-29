@@ -3,7 +3,11 @@ function builtInCommands(register) {
   
   register("echo", args => {
     return args.join(" ");
-  }, "Print text to the screen");
+  }, "Print text to the screen", false);
+  
+  register("begin", args => {
+    return "Hello.\nWelcome.\nThank you for joining us on our journey.";
+  }, "???", false);
   
   // Register more commands here
 }
