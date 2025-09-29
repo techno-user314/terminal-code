@@ -1,7 +1,7 @@
 import { commands, setTip } from "./main.js";
 
 let advancementNum = 0;
-const granted = [false, false]
+let granted = [false, false]
 
 const advance = {
   observeCommand(cmd, args) {
