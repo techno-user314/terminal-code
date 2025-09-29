@@ -1,7 +1,7 @@
-![Terminal Code game cover image](/src/images/showcase.png)
-
 # Terminal Code
 **A browser RPG, set in the Linux command line, about routine, automation, and secrets in the network.**
+
+![Terminal Code game cover image](/src/images/showcase.png)
 
 ## Description
 You begin with nothing but a blinking cursor. Your job is simple: execute routine system tasks — collect information, file reports, tidy directories. They seem like pointless, unrelated, and boring assignments, but you soon learn how to automate them, using your ever-growing personal toolkit of commands.
