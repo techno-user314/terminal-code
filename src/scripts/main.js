@@ -74,12 +74,20 @@ function handleCommand(cmd) {
 
   if (commands[name]) {
     if (!commands[name].enabled) {
-      appendOutput(name + ": command disabled");
+      appendOutput(name + " - This is a debug message: command disabled");
       return;
     }
     try {
       const result = commands[name].fn(args);
-      if (result !== undefined) appendOutput(result);
+      if (result instanceof Promise) {
+        result.then(resolved => {
+          if (resolved !== undefined) appendOutputAnimated(resolved);
+        }).catch(err => {
+          appendOutputAnimated("Error, see log for details");
+        });
+      } else {
+        if (result !== undefined) appendOutputAnimated(result);
+      }
     } catch (e) {
       appendOutput("Error: " + e.message);
     }
