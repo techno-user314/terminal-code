@@ -1,3 +1,5 @@
+![Terminal Code game cover image](/src/images/showcase.png)
+
 # Terminal Code
 **A browser RPG, set in the Linux command line, about routine, automation, and secrets in the network.**
 
