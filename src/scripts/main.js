@@ -121,10 +121,6 @@ function handleCommand(cmd) {
 }
 
 // Register basic utility commands
-registerCommand("clear", () => {
-  document.getElementById('output').innerHTML = "";
-}, "Clear the screen");
-
 registerCommand("help", () => {
     let out = "Available commands:\n";
     for (const [name, obj] of Object.entries(commands)) {
@@ -134,6 +130,10 @@ registerCommand("help", () => {
     }
     return out;
 }, "List all commands");
+
+registerCommand("clear", () => {
+  document.getElementById('output').innerHTML = "";
+}, "Clear the screen");
 
 // Load commands
 builtInCommands(registerCommand);
