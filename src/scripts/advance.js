@@ -2,6 +2,7 @@ import { commands, setTip } from "./main.js";
 
 let advancementNum = 0;
 let granted = [false, false]
+let messageNumber = -1;
 
 const advance = {
   observeCommand(cmd, args) {
@@ -46,22 +47,21 @@ const advance = {
     
       case 3:
         if (cmd === "help") {
-          commands["begin"].enabled = true;
-          setTip("Go ahead, try it.");
+          commands["msg"].enabled = true;
+          messageNumber = 0;
           advancementNum += 1;
         }
         break;
         
       case 4:
-        if (cmd === "begin") {
-          setTip("");
+        if (cmd === "msg") {
           advancementNum += 1;
         }
         break;
-        
       case 5:
-        commands["begin"].enabled = false;
+        messageNumber = -1;
         advancementNum += 1;
+        break;
         
       default:
         break;
@@ -69,4 +69,4 @@ const advance = {
   }
 };
 
-export { advance };
+export { advance, messageNumber };
