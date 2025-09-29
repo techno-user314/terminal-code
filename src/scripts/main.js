@@ -135,6 +135,10 @@ registerCommand("clear", () => {
   document.getElementById('output').innerHTML = "";
 }, "Clear the screen");
 
+registerCommand("exit", () => {
+  window.location.reload();
+}, "Abandon your post");
+
 // Load commands
 builtInCommands(registerCommand);
 
