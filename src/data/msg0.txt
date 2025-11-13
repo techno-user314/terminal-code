@@ -1,0 +1,27 @@
+1 New message(s):
+
+----------------------------
+MESSAGE FROM: Supervisor [SYS-BOSS]
+----------------------------
+
+Welcome, operator.  
+You’ve been assigned to Sector 7 Process Oversight. Don’t overthink it — you’ll receive commands, and you’ll execute them. Efficiently.
+
+Your responsibilities are simple:
+ • Maintain directory integrity.  
+ • Execute routine data rotations.  
+ • Confirm system pings when requested.  
+
+You are *not* required to understand the purpose of these tasks.
+Do not attempt to access restricted directories. Permissions are for your protection.
+
+Performance is monitored.  
+Compliance is expected.  
+Failure will be noted.
+
+Now, proceed to your assigned tasks.  
+Remember: the system depends on you.
+
+— SYS-BOSS
+
+EOF

@@ -105,7 +105,7 @@ function handleCommand(cmd) {
 
   if (commands[name]) {
     if (!commands[name].enabled) {
-      appendOutputAnimated(name + " - This is a debug message: command disabled");
+      appendOutput(name + " - This is a debug message: command disabled");
       return;
     }
     try {
