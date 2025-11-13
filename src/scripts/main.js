@@ -51,8 +51,8 @@ cmdline.addEventListener('keydown', ev => {
 // ---- COMMAND REGISTRY ----
 const commands = {};
 
-export function registerCommand(name, fn, helpText = "") {
-  commands[name] = { fn, helpText, enabled: true };
+export function registerCommand(name, fn, helpText = "", able = true) {
+  commands[name] = { fn, helpText, enabled: able, use_count: 0 };
 }
 
 function appendOutput(text) {
@@ -62,6 +62,37 @@ function appendOutput(text) {
     .replace(/\n/g, "<br>");
   output.appendChild(div);
   screen.scrollTop = screen.scrollHeight;
+}
+
+function appendOutputAnimated(text, speed = 25, lineDelay = 150) {
+  const lines = String(text).split("\n");
+
+  let lineIndex = 0;
+
+  function typeLine() {
+    if (lineIndex >= lines.length) return; // done
+
+    const lineElem = document.createElement("div");
+    output.appendChild(lineElem);
+
+    let charIndex = 0;
+    function typeChar() {
+      if (charIndex < lines[lineIndex].length) {
+        lineElem.textContent += lines[lineIndex][charIndex];
+        charIndex++;
+        screen.scrollTop = screen.scrollHeight;
+        setTimeout(typeChar, speed);
+      } else {
+        // Move to next line after short pause
+        lineIndex++;
+        if (lineIndex < lines.length) {
+          setTimeout(typeLine, lineDelay);
+        }
+      }
+    }
+    typeChar();
+  }
+  typeLine();
 }
 
 function handleCommand(cmd) {
@@ -74,25 +105,32 @@ function handleCommand(cmd) {
 
   if (commands[name]) {
     if (!commands[name].enabled) {
-      appendOutput(name + ": command disabled");
+      appendOutputAnimated(name + " - This is a debug message: command disabled");
       return;
     }
     try {
       const result = commands[name].fn(args);
-      if (result !== undefined) appendOutput(result);
+      
+      if (result instanceof Promise) {
+        result.then(resolved => {
+          if (resolved !== undefined) appendOutputAnimated(resolved);
+        }).catch(err => {
+          appendOutputAnimated("Error, see log for details");
+        });
+      } else {
+        if (result !== undefined) appendOutputAnimated(result);
+      }
+      
     } catch (e) {
-      appendOutput("Error: " + e.message);
+      appendOutputAnimated("Error, see log for details");
+      console.log("Error: " + e.message);
     }
   } else {
-    appendOutput(name + ": command not found");
+    appendOutputAnimated(name + ": command not found");
   }
 }
 
 // Register basic utility commands
-registerCommand("clear", () => {
-  document.getElementById('output').innerHTML = "";
-}, "Clear the screen");
-
 registerCommand("help", () => {
     let out = "Available commands:\n";
     for (const [name, obj] of Object.entries(commands)) {
@@ -102,6 +140,14 @@ registerCommand("help", () => {
     }
     return out;
 }, "List all commands");
+
+registerCommand("clear", () => {
+  document.getElementById('output').innerHTML = "";
+}, "Clear the screen");
+
+registerCommand("exit", () => {
+  window.location.reload();
+}, "Abandon your post");
 
 // Load commands
 builtInCommands(registerCommand);
